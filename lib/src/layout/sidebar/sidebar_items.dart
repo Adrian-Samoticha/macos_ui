@@ -100,15 +100,15 @@ class SidebarItems extends StatelessWidget {
   final MouseCursor? cursor;
 
   /// The user’s selected system accent color.
-  AccentColor get _accentColor =>
-      AccentColorListener.instance.currentAccentColor ?? AccentColor.blue;
+  AccentColor _getAccentColor(BuildContext context) =>
+      MacosTheme.of(context).accentColor ?? AccentColor.blue;
 
   /// Returns the sidebar item’s selected color.
   Color _getColor(BuildContext context) {
     final isMainWindow = WindowMainStateListener.instance.isMainWindow;
 
     return _ColorProvider.getSelectedColor(
-      accentColor: _accentColor,
+      accentColor: _getAccentColor(context),
       isDarkModeEnabled: MacosTheme.of(context).brightness.isDark,
       isWindowMain: isMainWindow,
     );
