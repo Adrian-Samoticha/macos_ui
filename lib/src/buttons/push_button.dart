@@ -256,8 +256,8 @@ class PushButtonState extends State<PushButton>
   @visibleForTesting
   bool buttonHeldDown = false;
 
-  AccentColor get _accentColor =>
-      AccentColorListener.instance.currentAccentColor ?? AccentColor.blue;
+  AccentColor _getAccentColor(BuildContext context) =>
+      MacosTheme.of(context).accentColor ?? AccentColor.blue;
 
   BoxDecoration _getBoxDecoration() {
     // If the window isn’t currently the main window (that is, it is not in
@@ -265,7 +265,7 @@ class PushButtonState extends State<PushButton>
     final isMainWindow = WindowMainStateListener.instance.isMainWindow;
 
     return _BoxDecorationBuilder.buildBoxDecoration(
-      accentColor: _accentColor,
+      accentColor: _getAccentColor(context),
       isEnabled: widget.enabled,
       isDarkModeEnabled: MacosTheme.of(context).brightness.isDark,
       isSecondary: !isMainWindow || (widget.secondary ?? false),
@@ -284,7 +284,7 @@ class PushButtonState extends State<PushButton>
     return MacosDynamicColor.resolve(
       widget.color ??
           _BoxDecorationBuilder.getGradientColors(
-            accentColor: _accentColor,
+            accentColor: _getAccentColor(context),
             isEnabled: enabled,
             isDarkModeEnabled: theme.brightness.isDark,
             isSecondary: isSecondary || !isWindowMain,
