@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:macos_ui/macos_ui.dart';
-import 'package:macos_ui/src/enums/accent_color.dart';
 import 'package:macos_ui/src/library.dart';
 
 CupertinoDynamicColor _kScrollbarColor = CupertinoDynamicColor.withBrightness(
