@@ -212,8 +212,6 @@ class MacosThemeData extends Equatable with Diagnosticable {
     AccentColor? accentColor,
     bool? isMainWindow,
   }) {
-    print('Called MacosThemeData factory.');
-
     // ignore: no_leading_underscores_for_local_identifiers
     final Brightness _brightness = brightness ?? Brightness.light;
     final bool isDark = _brightness == Brightness.dark;
