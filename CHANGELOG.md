@@ -1,3 +1,24 @@
+## [2.1.2]
+### 🛠️ Updated 🛠️
+* Add “Older macOS versions” section to README
+* Add Flutter version constraints to prevent the following error:
+  ```
+  Package validation found the following error:
+  * pubspec.yaml allows Flutter SDK version 1.9.x, which does not support the flutter.plugin.platforms key.
+    Please consider increasing the Flutter SDK requirement to ^1.10.0 (environment.sdk.flutter)
+  ```
+
+## [2.1.1]
+* Fixed a bug where `MacosPulldownMenuItem` would not show an alert dialog when tapped.
+
+## [2.1.0]
+* Updated dependencies
+* Support macOS 15
+
+## [2.0.9]
+### 🛠️ Updated 🛠️
+* Add `expandDisclosureItems` flag to `SidebarItem` to optionally (default not changed) expand disclosure items initially
+
 ## [2.0.8]
 ### 🛠️ Updated 🛠️
 * Fixed `SidebarItem` text overflowing.
