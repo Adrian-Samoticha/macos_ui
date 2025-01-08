@@ -38,7 +38,12 @@ class MacosColor extends Color {
   /// Linearly interpolate between two [MacosColor]s.
   static MacosColor lerp(MacosColor a, MacosColor b, double t) {
     final Color? color = Color.lerp(a, b, t);
-    return MacosColor(color!.value);
+    return MacosColor.fromRGBO(
+      (color!.r * 255).toInt(),
+      (color.g * 255).toInt(),
+      (color.b * 255).toInt(),
+      color.a,
+    );
   }
 
   /// Combine the foreground color as a transparent color over top
@@ -139,22 +144,26 @@ class MacosColor extends Color {
     if (other.runtimeType != runtimeType) {
       return false;
     }
-    return other is MacosColor && other.value == value;
+    return other is MacosColor && other.hashCode == hashCode;
   }
 
   @override
-  int get hashCode => value.hashCode;
+  int get hashCode => Object.hash(r, g, b, a);
 
   @override
-  String toString() {
-    return 'MacosColor(0x${value.toRadixString(16).padLeft(8, '0')})';
-  }
+  String toString() =>
+      'MacosColor(alpha: ${a.toStringAsFixed(4)}, red: ${r.toStringAsFixed(4)}, green: ${g.toStringAsFixed(4)}, blue: ${b.toStringAsFixed(4)}, colorSpace: $colorSpace)';
 }
 
 extension ColorX on Color {
   /// Returns a [MacosColor] with the same color values as this [Color].
   MacosColor toMacosColor() {
-    return MacosColor(value);
+    return MacosColor.fromRGBO(
+      (r * 255).floor(),
+      (g * 255).floor(),
+      (b * 255).floor(),
+      a,
+    );
   }
 }
 
