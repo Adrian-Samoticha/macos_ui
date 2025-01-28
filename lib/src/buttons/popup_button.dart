@@ -51,7 +51,10 @@ class _MacosPopupMenuItemButtonState<T>
 
   bool get _isHighlighted => _isFocused;
 
+  /// The last time the mouse entered this item.
   static DateTime _lastMouseEnterTime = DateTime.now();
+
+  /// The last time the focus changed that wasn’t caused by the mouse.
   static DateTime _lastNonMouseFocusChange = DateTime.now();
 
   void _handleFocusChange(bool focused) {
